@@ -1,5 +1,7 @@
 const ventas = require("./datos")
 
+//Minireto 2
+
 function valorVenta(venta){
     return venta.cantidad*venta.precio
 }
@@ -59,14 +61,52 @@ function ventasPorCiudad(ventas, ciudad){
 }
 
 
-console.log(valorVenta(ventas[0]))
-console.log(totalVendido(ventas))
-console.log(unidadesVendidas(ventas))
-console.log(ventaMayor(ventas))
-console.log(ticketPromedio(ventas))
-console.log(ventasPorCiudad(ventas,"Medellín"))
+//Minireto 3
+
+const totalVendidoM =(ventas) => ventas.map(venta=>valorVenta(venta)).reduce((totalvendido,totalporventa)=>totalvendido+totalporventa,0)
 
 
+const unidadesVendidasM = (ventas)=> ventas.map(venta=>venta.cantidad).reduce((totalunidades,unidadesporventa)=>totalunidades+unidadesporventa,0)
 
 
+const ventasPorCiudadM = (ventas,ciudad)=>ventas.filter(venta=>venta.ciudad.toLowerCase().trim()===ciudad.toLowerCase().trim()).reduce((totalporciudad,totalporventa)=> totalporciudad+valorVenta(totalporventa),0)
+
+
+function totalPorCiudad(ventas){
+    const totalCiudad={}
+    for (const venta of ventas){
+
+        if (totalCiudad[venta.ciudad.trim().toLowerCase()]===undefined){
+            totalCiudad[venta.ciudad.trim().toLowerCase()]=0
+        }
+        totalCiudad[venta.ciudad.trim().toLowerCase()]+=valorVenta(venta)
+    }
+return totalCiudad
+}
+
+
+function unidadesPorProducto(ventas){
+    const totalunidades={}
+    for (const venta of ventas){
+
+        if (totalunidades[venta.producto.trim().toLowerCase()]===undefined){
+            totalunidades[venta.producto.trim().toLowerCase()]=0
+        }
+        totalunidades[venta.producto.trim().toLowerCase()]+=venta.cantidad
+    }
+return totalunidades
+}
+
+
+function topProductosPorValor(ventas,k){
+    const totalporproducto={}
+    for (const venta of ventas){
+        const producto=venta.producto.trim().toLowerCase()
+        if (totalporproducto[producto]===undefined){
+            totalporproducto[producto]=0
+        }
+        totalporproducto[producto]+=valorVenta(venta)
+    }
+    return  Object.entries(totalporproducto).sort((a,b)=>b[1]-a[1]).slice(0,k)
+}
 

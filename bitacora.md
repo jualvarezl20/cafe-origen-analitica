@@ -36,8 +36,8 @@ Salida: Sale la sumatoria de las ventas de la lista.
 Proceso: Se crea un acumulador y se comienza a recorrer la lista ventas, sacando valorVenta y acumulandolo.
 
 Función unidadesVendidas:
-Entrada: Cantidad de unidades vendidas, se saca de la lista ventas. 
-Salida: Sale el total de las unidades vendidas. 
+Entrada: Cantidad de unidades vendidas, se saca de la lista ventas.
+Salida: Sale el total de las unidades vendidas.
 Proceso: Se crea un acumulador y se recorre ventas, se suma las unidades vendidas.
 
 Función ventaMayor:
@@ -48,7 +48,7 @@ Proceso: Se recorre la lista ventas usando valorVenta para obtener los valores d
 Función ticketPromedio:
 Entrada: Entra la función totalVendido y la cantidad de productos de la lista ventas por objeto.
 Salida: Valor numerico que indica el promedio del valor total dividido la cantidad de ventas validas.
-Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro cantidad, se realiza una validación de que sea mayor a 0 y posteriomente se suma +1 al contador para luego usar la función totalVendido y dividirlo por el contador ya mencionado. 
+Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro cantidad, se realiza una validación de que sea mayor a 0 y posteriomente se suma +1 al contador para luego usar la función totalVendido y dividirlo por el contador ya mencionado.
 
 Función ventasPorCiudad:
 
@@ -68,4 +68,47 @@ Proceso: Se crea un acumulador y se recorre la lista ventas, se valida que el no
 | ventasPorCiudad  |    356000 (medellín)   |         Error        |        84000 (medellín)          |
 
 
+## Reto 3:
+
+## totalVendidoM(ventas)
+¿Qué recorro?: Todas las ventas, con "map" y luego con "reduce".
+¿Qué filtro?: Ninguna; se toman todas.
+¿Qué transformo?: Cada venta en su valor (cantidad × precio), con "map" y "valorVenta".
+¿Qué acumulo?: La suma de los valores, con "reduce" empezando en 0.
+¿Cómo agrupo?: No agrupa; el resultado es un solo número.
+
+## unidadesVendidasM(ventas)
+¿Qué recorro?: Todas las ventas, con "map" y luego con "reduce".
+¿Qué filtro?: Ninguna.
+¿Qué transformo?: Cada venta en su cantidad, con "map".
+¿Qué acumulo?: La suma de las cantidades, con "reduce" empezando en 0.
+¿Cómo agrupo?: No agrupa.
+
+## ventasPorCiudadM(ventas, ciudad)
+¿Qué recorro?: Todas las ventas con "filter", y luego solo las filtradas con "reduce".
+¿Qué filtro?: Solo las ventas cuya ciudad, normalizada con "toLowerCase()" y "trim()", es igual a la ciudad buscada, normalizada de la misma forma. Así se incluye la venta escrita como "medellín ".
+¿Qué transformo?: No uso "map". El valor de cada venta se calcula dentro del "reduce", con "valorVenta".
+¿Qué acumulo?: La suma de los valores de las ventas filtradas, con "reduce" empezando en 0.
+¿Cómo agrupo?: No agrupa; calcula el total de una sola ciudad.
+
+## totalPorCiudad(ventas)
+¿Qué recorro?: Todas las ventas, con "for...of".
+¿Qué filtro?: Ninguna.
+¿Qué transformo?: La ciudad de cada venta, normalizada con "trim()" y "toLowerCase()" para usarla como clave.
+¿Qué acumulo?: El valor de cada venta ("valorVenta"), sumado en el grupo de su ciudad.
+¿Cómo agrupo?: Con un objeto como diccionario: la clave es la ciudad normalizada y el valor, el total vendido. Si la clave todavía no existe, se crea en 0. Resultado: 4 ciudades, sin grupos duplicados.
+
+## unidadesPorProducto(ventas)
+¿Qué recorro?: Todas las ventas, con "for...of".
+¿Qué filtro?: Ninguna.
+¿Qué transformo?: El nombre del producto, normalizado con "trim()" y "toLowerCase()" para usarlo como clave.
+¿Qué acumulo?: La cantidad de cada venta, sumada en el grupo de su producto.
+¿Cómo agrupo?: Con un objeto como diccionario: la clave es el producto normalizado y el valor, las unidades vendidas. Si la clave no existe, se crea en 0.
+
+## topProductosPorValor(ventas, k)
+¿Qué recorro?: Todas las ventas con "for...of", para agrupar. Después, la lista de pares, para ordenar.
+¿Qué filtro?: Ninguna venta. Al final me quedo con los primeros k productos usando "slice(0, k)".
+¿Qué transformo?: Cada venta en su valor ("valorVenta"). Después, el objeto de grupos en una lista de pares "[producto, total]" con "Object.entries".
+¿Qué acumulo?: El valor total de cada producto.
+¿Cómo agrupo?: Por producto normalizado, con un objeto como diccionario. Luego ordeno los pares de mayor a menor con "sort((a, b) => b[1] - a[1])", aplicado sobre una copia ("[...pares]") para no modificar ningún arreglo existente. El arreglo "ventas" conserva su orden original.
 

@@ -52,9 +52,9 @@ Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro 
 
 Función ventasPorCiudad:
 
-Entrada: Entra la función totalVendido y la cantidad de productos de la lista ventas por objeto.
-Salida: Valor numerico que indica el promedio del valor total dividido la cantidad de ventas validas.
-Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro cantidad, se realiza una validación de que sea mayor a 0 y posteriomente se suma +1 al contador para luego usar la función totalVendido y dividirlo por el contador ya mencionado. 
+Entrada: La lista ventas y el nombre de la ciudad a buscar.
+Salida: Valor numerico que indica el total de ventas por ciudad.
+Proceso: Se crea un acumulador y se recorre la lista ventas, se valida que el nombre de la ciudad sea igual al parametro de entrada, y en caso de ser igual, se llama a la función valorVenta y se suma al acumulador.
 
 ## Tabla de traza ejercicios 6 y 7
 

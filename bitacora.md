@@ -1,4 +1,4 @@
-## Microreto 1:
+# Microreto 1:
 
 ## Diccionario de Datos
 
@@ -21,10 +21,51 @@ Caso borde 2: La venta con id 8 se observa una cantidad 0. No se tendrá en cunt
 Caso borde 3: Se repite el codigo del clinte en varias ventas, y aunque puede que no sea un error, ya que puede generar diferentes ventas, si es curioso la conbinación de fechas cantidades, productos y ciudades en cada clinte repetido. Se va a dejar igual por ahra a no ser de que se enuntre mas información y se puede decidir si es un error o es algo normal.
 
 
-## Microreto 2:
+# Microreto 2:
+
+## Pseudocódigo de cada indicador
 
 Función valorVenta:
-
-Entrada: Cantidad de productos y valor por producto.
+Entrada: Cantidad de productos y valor por producto, los dos sacados de la lista ventas.
 Salida: Sale el total a pagar por una venta.
-Proceso: Se multiplica cantidad de producto por valor producto y sale un nuero. 
+Proceso: Se multiplica cantidad de producto por valor producto y sale un nuero.
+
+Función totalVendido:
+Entrada: Entra la función valorVenta con cada uno de los objetos de la lista.
+Salida: Sale la sumatoria de las ventas de la lista.
+Proceso: Se crea un acumulador y se comienza a recorrer la lista ventas, sacando valorVenta y acumulandolo.
+
+Función unidadesVendidas:
+Entrada: Cantidad de unidades vendidas, se saca de la lista ventas. 
+Salida: Sale el total de las unidades vendidas. 
+Proceso: Se crea un acumulador y se recorre ventas, se suma las unidades vendidas.
+
+Función ventaMayor:
+Entrada: Entra la función valorVenta con cada uno de los objetos de la lista.
+Salida: El objeto con mayor valor de venta.
+Proceso: Se recorre la lista ventas usando valorVenta para obtener los valores de cada venta, y posteriomente compararlos con el siguinte y en caso de ser mayor, guardar el objeto completo de la venta.
+
+Función ticketPromedio:
+Entrada: Entra la función totalVendido y la cantidad de productos de la lista ventas por objeto.
+Salida: Valor numerico que indica el promedio del valor total dividido la cantidad de ventas validas.
+Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro cantidad, se realiza una validación de que sea mayor a 0 y posteriomente se suma +1 al contador para luego usar la función totalVendido y dividirlo por el contador ya mencionado. 
+
+Función ventasPorCiudad:
+
+Entrada: Entra la función totalVendido y la cantidad de productos de la lista ventas por objeto.
+Salida: Valor numerico que indica el promedio del valor total dividido la cantidad de ventas validas.
+Proceso: Se crea un contadoe, y se recorre la lista ventas llamndo su parametro cantidad, se realiza una validación de que sea mayor a 0 y posteriomente se suma +1 al contador para luego usar la función totalVendido y dividirlo por el contador ya mencionado. 
+
+## Tabla de traza ejercicios 6 y 7
+
+|     Función      | Prueba Arreglo comleto | Prueba Arreglo vacio | Prueba Arreglo con un elemnto(0) |
+|------------------|------------------------|----------------------|----------------------------------|
+| valorVenta       |    84000 (venta[0])    |         Error        |             84000                |
+| totalVendido     |         985000         |         Error        |             84000                |
+| unidadesVendidas |           21           |         Error        |               2                  |
+| ventaMayor       |    Elemnto con id:10   |         Error        |        Elemento completo         |
+| ticketPromedio   |       89545.4545       |         Error        |             84000                |
+| ventasPorCiudad  |    356000 (medellín)   |         Error        |        84000 (medellín)          |
+
+
+

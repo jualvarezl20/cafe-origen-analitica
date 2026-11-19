@@ -110,3 +110,19 @@ function topProductosPorValor(ventas,k){
     return  Object.entries(totalporproducto).sort((a,b)=>b[1]-a[1]).slice(0,k)
 }
 
+
+function ventasDelDia(ventas,fecha){
+    const ventaspordia=[]
+    for (const venta of ventas){
+        if (venta.fecha===fecha){
+            ventaspordia.push(venta)
+        }
+    }
+    return ventaspordia
+}
+
+console.log(ventasDelDia(ventas,"2026-01-01"))
+
+
+
+module.exports = {totalPorCiudad,unidadesPorProducto,topProductosPorValor, ventasDelDia }

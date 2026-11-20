@@ -112,3 +112,15 @@ Proceso: Se crea un acumulador y se recorre la lista ventas, se valida que el no
 ¿Qué acumulo?: El valor total de cada producto.
 ¿Cómo agrupo?: Por producto normalizado, con un objeto como diccionario. Luego ordeno los pares de mayor a menor con "sort((a, b) => b[1] - a[1])", aplicado sobre una copia ("[...pares]") para no modificar ningún arreglo existente. El arreglo "ventas" conserva su orden original.
 
+
+
+
+prediccion para las funciones de microreto 5:
+
+totalVendido: para esta función se tendra n*1 operaciones, sinedo  las la cantidad de ventas.
+
+ventaMayor:para esta función se tendra n*2 operaciones, sinedo n las la cantidad de ventas.
+
+totalPorCiudad:para esta función se tendra n*2 operaciones, sinedo n las la cantidad de ventas.
+
+Si n es 10,100,1000 siplemente se multiplica por el numero que se identificó de operaciones dentro de cada funcion y ya se especificó.

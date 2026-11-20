@@ -111,6 +111,8 @@ function topProductosPorValor(ventas,k){
 }
 
 
+//Minireto 4
+
 function ventasDelDia(ventas,fecha){
     const ventaspordia=[]
     for (const venta of ventas){
@@ -121,8 +123,46 @@ function ventasDelDia(ventas,fecha){
     return ventaspordia
 }
 
-console.log(ventasDelDia(ventas,"2026-01-01"))
 
-module.exports = {totalPorCiudad,unidadesPorProducto,topProductosPorValor, ventasDelDia }
+// Minireto 5
 
- 
+function totalVendidoContado(ventas){
+    const contadoroperaciones={operaciones:0}
+    let totalvendido=0
+    for (const venta of ventas){
+        contadoroperaciones.operaciones++
+        totalvendido=totalvendido+valorVenta(venta)
+    }
+    return contadoroperaciones
+}
+
+function ventaMayorContado(ventas){
+    const contadoroperaciones={operaciones:0}
+    let ventamayor=valorVenta(ventas[0])
+    let ventamayorindice=ventas[0]
+    for (const venta of ventas){
+        contadoroperaciones.operaciones++
+        if (valorVenta(venta)>ventamayor){
+            ventamayor=valorVenta(venta)
+            ventamayorindice=venta
+        }
+        contadoroperaciones.operaciones++
+    }
+    return contadoroperaciones
+}
+
+function ventasPorCiudadContado(ventas, ciudad){
+    const contadoroperaciones={operaciones:0}
+    let totalvendido=0
+        for (const venta of ventas){
+            contadoroperaciones.operaciones++
+            if (venta.ciudad.trim().toLowerCase()===ciudad.trim().toLowerCase()){
+                totalvendido=totalvendido+valorVenta(venta)
+            }
+            contadoroperaciones.operaciones++
+        }
+    return contadoroperaciones
+}
+
+
+module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado}

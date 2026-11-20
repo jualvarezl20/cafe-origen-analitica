@@ -19,7 +19,7 @@ function generarVentas(n) {
         const cantidad=Math.floor(Math.random()*5)+1
         ventas.push({id,fecha,cliente,...producto,ciudad,cantidad})
     }
-return ventas 
+return ventas
 }
 
-console.log(generarVentas(10))
+module.exports = {generarVentas}

@@ -123,6 +123,6 @@ function ventasDelDia(ventas,fecha){
 
 console.log(ventasDelDia(ventas,"2026-01-01"))
 
-
-
 module.exports = {totalPorCiudad,unidadesPorProducto,topProductosPorValor, ventasDelDia }
+
+ 

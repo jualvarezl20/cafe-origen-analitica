@@ -7,7 +7,6 @@ function valorVenta(venta){
     return venta.cantidad*venta.precio
 }
 
-
 function totalVendido(ventas){
     let totalvendido=0
     for (const venta of ventas){
@@ -16,7 +15,6 @@ function totalVendido(ventas){
     return totalvendido
 }
 
-
 function unidadesVendidas(ventas){
     let totalunidades=0
     for (const venta of ventas){
@@ -24,7 +22,6 @@ function unidadesVendidas(ventas){
     }
     return totalunidades
 }
-
 
 function ventaMayor(ventas){
     let ventamayor=valorVenta(ventas[0])
@@ -38,7 +35,6 @@ function ventaMayor(ventas){
     return ventamayorindice
 }
 
-
 function ticketPromedio(ventas){
     let cantidadventas=0
     for (const venta of ventas){
@@ -49,8 +45,6 @@ function ticketPromedio(ventas){
     return totalVendido(ventas)/cantidadventas
 }
 
-
-
 function ventasPorCiudad(ventas, ciudad){
     let totalvendido=0
         for (const venta of ventas){
@@ -60,6 +54,13 @@ function ventasPorCiudad(ventas, ciudad){
         }
     return totalvendido
 }
+
+
+function normalizar (palabra){
+    palabra=palabra.trim().toLowerCase()
+    return palabra
+}
+
 
 
 //Minireto 3
@@ -186,6 +187,28 @@ function clientesRecurrentes(ventas) {
     }
     return recurrentes
 }
+
+
+//Minireto 7
+
+const totalCiudadCadena=(ventas,ciudad)=>ventas.map(venta=>({...venta,ciudad:venta.ciudad.toLowerCase().trim()})).filter(venta=>venta.ciudad.toLowerCase().trim()===ciudad.toLowerCase().trim()).reduce((totalporciudad,totalporventa)=> totalporciudad+valorVenta(totalporventa),0)
+
+
+function totalCiudadUnaPasada(ventas, ciudad){
+    let ciudades=[]
+    for (venta of ventas){
+        if (normalizar(venta.ciudad)===normalizar(ciudad) && !ciudades.includes(normalizar(venta.ciudad))){
+            ciudades.push(normalizar(venta.ciudad))
+        }
+    }
+    return ciudades
+}
+
+console.log(totalCiudadUnaPasada(ventas, "Medellín"))
+
+
+
+
 
 
 module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado,primeraVenta,clientesRecurrentes}

@@ -145,4 +145,6 @@ tempo calculdo en consola para Tiempo(100000)=57.969s
 
 EL recurrentes.includes afecta bastante, porque lo que hace es mirar si el cliente ya está incluido en la lista de clientes recurrentes, por o cual revisa una vez mas toda la lista mirando esta condicion.
 
-COnclusion:
+Conclusion:
+
+

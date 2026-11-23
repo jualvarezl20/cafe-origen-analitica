@@ -164,5 +164,14 @@ function ventasPorCiudadContado(ventas, ciudad){
     return contadoroperaciones
 }
 
+function primeraVenta(ventas){
+    const contadoroperaciones={operaciones:0}
+    ventas[0]
+    contadoroperaciones.operaciones++
+    return contadoroperaciones
+}
 
-module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado}
+module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado,primeraVenta}
+
+
+

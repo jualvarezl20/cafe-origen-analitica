@@ -1,4 +1,5 @@
 const ventas = require("./datos")
+const {generarVentas} = require("./generador")
 
 //Minireto 2
 
@@ -171,7 +172,20 @@ function primeraVenta(ventas){
     return contadoroperaciones
 }
 
-module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado,primeraVenta}
+// Minireto 6
+
+function clientesRecurrentes(ventas) {
+    const recurrentes = []
+    for (let i = 0; i < ventas.length; i++) {
+        for (let j = i + 1; j < ventas.length; j++) {
+            if (ventas[i].cliente === ventas[j].cliente &&
+                !recurrentes.includes(ventas[i].cliente)) {
+                recurrentes.push(ventas[i].cliente)
+            }
+        }
+    }
+    return recurrentes
+}
 
 
-
+module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado,primeraVenta,clientesRecurrentes}

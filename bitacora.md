@@ -1,4 +1,4 @@
-# Microreto 1:
+# Minireto 1:
 
 ## Diccionario de Datos
 
@@ -21,7 +21,7 @@ Caso borde 2: La venta con id 8 se observa una cantidad 0. No se tendrá en cunt
 Caso borde 3: Se repite el codigo del clinte en varias ventas, y aunque puede que no sea un error, ya que puede generar diferentes ventas, si es curioso la conbinación de fechas cantidades, productos y ciudades en cada clinte repetido. Se va a dejar igual por ahra a no ser de que se enuntre mas información y se puede decidir si es un error o es algo normal.
 
 
-# Microreto 2:
+# Minireto  2:
 
 ## Pseudocódigo de cada indicador
 
@@ -68,7 +68,7 @@ Proceso: Se crea un acumulador y se recorre la lista ventas, se valida que el no
 | ventasPorCiudad  |    356000 (medellín)   |         Error        |        84000 (medellín)          |
 
 
-## Reto 3:
+## Minireto 3:
 
 ## totalVendidoM(ventas)
 ¿Qué recorro?: Todas las ventas, con "map" y luego con "reduce".
@@ -124,3 +124,25 @@ ventaMayor:para esta función se tendra n*2 operaciones, sinedo n las la cantida
 totalPorCiudad:para esta función se tendra n*2 operaciones, sinedo n las la cantidad de ventas.
 
 Si n es 10,100,1000 siplemente se multiplica por el numero que se identificó de operaciones dentro de cada funcion y ya se especificó.
+
+
+## Minireto 6
+
+Tiempo ejecución: 4.5ms para n=1000
+Tiempo ejecución: 17.071ms para n=2000
+Tiempo ejecución: 62.436ms para n=4000
+Tiempo ejecución: 295.699ms para n=8000
+Tiempo ejecución: 1.034s para n=16000
+
+cómo es una función O(n^2), a simple vista se observa que al duplicar n, se uadruplica, y sto tiene sentido por la misma función.
+
+usamos el tiempo de ejecución 1 cómo parametro de predicción, cómo la función con n=1 no es concluyente ya que hay tiempos fijos pequeños que no son comparables en una magnitud pequeña. Para resolver esto usamos el primer resulyado y lo usamos para definir la nueva funcion de tiempo, por lo cual tenemo Tiempo(n)=((n/1000)^2)*4.5
+
+Tiempo(100000)=45000 ms o 45 s
+Tiempo(1000000)=4500000 ms o 4500 s 75 min
+
+tempo calculdo en consola para Tiempo(100000)=57.969s
+
+EL recurrentes.includes afecta bastante, porque lo que hace es mirar si el cliente ya está incluido en la lista de clientes recurrentes, por o cual revisa una vez mas toda la lista mirando esta condicion.
+
+COnclusion:

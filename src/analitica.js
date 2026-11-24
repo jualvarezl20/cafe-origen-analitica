@@ -195,19 +195,16 @@ const totalCiudadCadena=(ventas,ciudad)=>ventas.map(venta=>({...venta,ciudad:ven
 
 
 function totalCiudadUnaPasada(ventas, ciudad){
-    let ciudades=[]
-    for (venta of ventas){
-        if (normalizar(venta.ciudad)===normalizar(ciudad) && !ciudades.includes(normalizar(venta.ciudad))){
-            ciudades.push(normalizar(venta.ciudad))
+    let totalciudad=0
+    for (const venta of ventas){
+        if (normalizar(venta.ciudad)===normalizar(ciudad)){
+            totalciudad+=valorVenta(venta)
         }
     }
-    return ciudades
+    return totalcudad
 }
 
 console.log(totalCiudadUnaPasada(ventas, "Medellín"))
-
-
-
 
 
 

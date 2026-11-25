@@ -1,5 +1,3 @@
-<!-- [Claude · MiniReto 8 · 24/11/2026] Archivo escrito por Claude (antes estaba vacío). Se basa en el código de analitica.js sin modificarlo, en las mediciones de Juanes del MiniReto 6 y en mediciones hechas por Claude con 10.000 ventas generadas. -->
-
 # Informe de rendimiento · Motor de analítica Café Origen v0.2
 
 Este documento describe el rendimiento de cada función del motor cuando crece el historial de ventas. **n** es el número de ventas. Las complejidades se justifican con el código de `src/analitica.js`.

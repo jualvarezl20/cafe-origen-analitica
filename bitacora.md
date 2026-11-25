@@ -21,7 +21,7 @@ Caso borde 2: La venta con id 8 se observa una cantidad 0. No se tendrá en cunt
 Caso borde 3: Se repite el codigo del clinte en varias ventas, y aunque puede que no sea un error, ya que puede generar diferentes ventas, si es curioso la conbinación de fechas cantidades, productos y ciudades en cada clinte repetido. Se va a dejar igual por ahra a no ser de que se enuntre mas información y se puede decidir si es un error o es algo normal.
 
 
-<!-- [Claude · MiniReto 1] Nota agregada: precisión sobre el caso borde 1. -->
+<!-- Nota agregada: precisión sobre el caso borde 1. -->
 > **Nota (MR1):** en `datos.js` la ciudad de la venta 5 es `"medellín "`: tiene minúscula **y además un espacio al final**. Por eso normalizar solo con `toLowerCase()` no basta; también hace falta `trim()`. Así lo hacen las funciones de los MiniRetos 2 y 3.
 
 
@@ -73,7 +73,7 @@ Proceso: Se crea un acumulador y se recorre la lista ventas, se valida que el no
 
 
 
-<!-- [Claude · MiniReto 2] Desde aquí hasta "Minireto 3": comportamiento real con el arreglo vacío, decisiones y dos trazas manuales. La tabla de arriba quedó igual. -->
+<!--  Desde aquí hasta "Minireto 3": comportamiento real con el arreglo vacío, decisiones y dos trazas manuales. La tabla de arriba quedó igual. -->
 
 ### Resultados reales con el arreglo vacío (MR2)
 
@@ -180,12 +180,12 @@ Resultado a mano: **356.000**. El programa da 356.000 ✅. La venta 5 entra grac
 
 
 
-<!-- [Claude · MiniReto 3] Corrección y resultados de verificar.js -->
+<!--Corrección y resultados de verificar.js -->
 > **Corrección (MR3):** arriba dice que el ordenamiento se aplica "sobre una copia (`[...pares]`)". En el código, el `sort` se aplica directamente al resultado de `Object.entries(...)`, sin `[...]`. Igual está bien: `Object.entries` **ya crea un arreglo nuevo**, así que ordenarlo no toca `ventas`. Se comprobó en `verificar.js`: después de llamar las funciones, `ventas` sigue empezando en el id 1 y terminando en el 12.
 
 ### Resultado de `node src/verificar.js` (MR3)
 
-<!-- [Claude · MiniReto 3] verificar.js fue escrito por Claude; antes estaba vacío. -->
+<!--  verificar.js  -->
 `verificar.js` ejecuta la versión con ciclo y la versión con métodos con los mismos datos, en tres casos: muestra completa, un elemento y arreglo vacío.
 
 | Par | Muestra completa | Un elemento | Vacío |
@@ -197,12 +197,12 @@ Resultado a mano: **356.000**. El programa da 356.000 ✅. La venta 5 entra grac
 Criterios del reto: `totalPorCiudad` devuelve 4 ciudades sin duplicados (OK); el top 3 por valor es Origen Huila 500 g, Origen Sierra 500 g y Prensa francesa (OK); y `ventas` conserva su orden original (OK).
 
 
-<!-- [Claude · MiniReto 4] Sección nueva completa. -->
+<!-- Sección nueva completa. -->
 # Minireto 4:
 
 ## Reporte v0.1 (`node src/reporte.js`)
 
-<!-- [Claude · MiniReto 4] reporte.js fue completado por Claude; la línea original de Juanes quedó comentada al final del archivo. -->
+<!-- -->
 El reporte muestra cinco secciones: **1. Resumen general** (registros, total, unidades, ticket promedio y venta mayor), **2. Ventas por ciudad**, **3. Unidades por producto**, **4. Top 3 de productos por valor** y **5. Resumen por día**, con un día con ventas (2026-09-05) y uno sin ventas (2026-09-10). Los valores salen en pesos con `toLocaleString("es-CO")` y las columnas están alineadas con `padEnd` y `padStart`.
 
 Valores del reporte con la muestra: total $985.000 · 21 unidades · ticket $89.545 · venta mayor id 10 ($168.000) · Medellín $356.000, Bogotá $276.000, Cali $185.000, Pereira $168.000.
@@ -234,7 +234,7 @@ Valores del reporte con la muestra: total $985.000 · 21 unidades · ticket $89.
 Se ejecutó el reporte completo: no aparece `NaN`, `undefined` ni ciudades duplicadas. Aparte del reporte, en la consola se ve un `356000` suelto. Viene del `console.log` de prueba que está al final de `analitica.js` (ver "Pendientes en el código").
 
 
-<!-- [Claude · MiniReto 5] Encabezado agregado; el texto de predicción de abajo es el original. -->
+<!--Encabezado agregado; el texto de predicción de abajo es el original. -->
 # Minireto 5:
 
 
@@ -250,7 +250,7 @@ Si n es 10,100,1000 siplemente se multiplica por el numero que se identificó de
 
 
 
-<!-- [Claude · MiniReto 5] Desde aquí hasta "Minireto 6": resultados de la medición, comparación con la predicción y clasificación Big O. -->
+<!--Desde aquí hasta "Minireto 6": resultados de la medición, comparación con la predicción y clasificación Big O. -->
 
 ### Resultados de la medición (MR5)
 
@@ -305,10 +305,10 @@ EL recurrentes.includes afecta bastante, porque lo que hace es mirar si el clien
 
 Conclusion:
 
-<!-- [Claude · MiniReto 6] Conclusión para la gerente (la sección estaba vacía). -->
+<!--Conclusión para la gerente (la sección estaba vacía). -->
 **Para la gerente:** el reporte de clientes recurrentes compara cada venta con todas las demás para ver si el cliente se repite. Por eso, cada vez que el historial se duplica, el trabajo no se duplica: se multiplica por cuatro. Con unos pocos miles de ventas responde en menos de un segundo. Con 100.000 ventas tardó casi un minuto, y con 1.000.000 tardaría más de una hora. El problema no es el computador ni los datos: es la forma en que está construido el reporte. Se puede rehacer para que revise cada venta una sola vez, y eso es lo que se hará en el MiniReto 9.
 
-<!-- [Claude · MiniReto 6] Desde aquí: verificación con 12 datos, traza de 5 ventas, tabla de tiempos, estimación y análisis de includes. -->
+<!--verificación con 12 datos, traza de 5 ventas, tabla de tiempos, estimación y análisis de includes. -->
 
 ### Verificación con los datos del Día 1 (MR6)
 
@@ -359,7 +359,7 @@ Arriba la estimación se hizo a partir de n = 1.000. Al usar la medición más g
 - En la práctica, gracias al `&&`, `includes` solo se ejecuta cuando los dos clientes coinciden, y la lista `recurrentes` es mucho más pequeña que n. Por eso lo que domina en las mediciones sigue siendo el n² de los dos ciclos. Aun así, con más clientes recurrentes el costo crece más que n², y eso ayuda a explicar por qué 100.000 ventas tardaron más de lo estimado.
 
 
-<!-- [Claude · MiniReto 7] Sección nueva completa. -->
+<!--Sección nueva completa. -->
 # Minireto 7:
 
 ## Comprobación con 10.000 ventas (MR7)
@@ -411,25 +411,24 @@ Se queda **`totalCiudadUnaPasada`**.
 - `totalCiudadCadena` se conserva en el código como referencia para el análisis y para `verificar.js`.
 
 
-<!-- [Claude · MiniReto 8] Sección nueva. -->
+<!-- Sección nueva. -->
 # Minireto 8:
 
 ## Informe de rendimiento v0.2 (MR8)
 
-<!-- [Claude · MiniReto 8] RENDIMIENTO.md fue escrito por Claude (antes estaba vacío). -->
+<!--  RENDIMIENTO.md  -->
 El informe completo está en `RENDIMIENTO.md`. Contiene la tabla de todas las funciones (qué hacen, tiempo, espacio, justificación y medición con 10.000 ventas), la **Proyección** a 1.000.000 de ventas, los **Riesgos** ordenados y el **Plan de optimización** de `clientesRecurrentes`.
 
 Resumen: todas las funciones del motor son O(n) u O(1), **excepto `clientesRecurrentes`, que es O(n²)**. Es el mayor riesgo: con 1.000.000 de ventas pasaría de una hora, mientras que el resto tarda menos de un segundo. La idea de mejora es guardar los clientes ya vistos en una estructura que responda "¿ya lo vi?" en un solo paso, en lugar de volver a recorrer las ventas.
 
 ## Revisión de un compañero (MR8)
 
-<!-- [Claude · MiniReto 8] Esta parte la tienes que hacer tú: pídele a un compañero que lea RENDIMIENTO.md y anota aquí su observación y tu respuesta. -->
 - **Compañero:** _(pendiente)_
 - **Observación:** _(pendiente)_
 - **Mi respuesta:** _(pendiente)_
 
 
-<!-- [Claude] Sección nueva: lo que solo puedes cambiar tú en el código. Claude no modificó ningún archivo de código existente. -->
+<!-- Sección nueva: lo que solo puedes cambiar tú en el código. Claude no modificó ningún archivo de código existente. -->
 # Pendientes en el código (los hace Juanes)
 
 1. **`analitica.js`, línea 204 (MR7):** el `return` de `totalCiudadUnaPasada` usa un nombre de variable distinto al declarado. Mientras siga así, **ningún archivo que importe `analitica.js` corre** (`reporte.js`, `verificar.js`, `medir.js`).
@@ -441,3 +440,14 @@ Resumen: todas las funciones del motor son O(n) u O(1), **excepto `clientesRecur
 7. **Commits:** hacer un commit identificado como **v0.1** (MR4) y otro como **v0.2** (MR8).
 
 Cuando los puntos 4 y 5 estén listos, las tres líneas DIFERENTE de `verificar.js` deben pasar a OK.
+
+
+new Set
+.has()  devuelve si la lista contiene ese elemnto
+.add() agrega un elemento si no está en la lista, si está no hace nada.
+.size devuelve el numero de elemntos de la lista sin repetir
+.set guarda o remplaza la clave valor.
+.get(clave) devuelve el valor. si la clave no existe devuelve undefined.
+
+
+

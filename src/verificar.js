@@ -1,12 +1,8 @@
-// ==========================================================================
+// ==============================================================
 // verificar.js — Pruebas del motor Café Origen
-// [Claude · 24/11/2026] Archivo escrito por Claude (antes estaba vacío).
-// No modifica analitica.js: solo importa sus funciones y compara resultados.
-// Ejecutar desde la raíz del proyecto:  node src/verificar.js
-//
 // REQUISITO: analitica.js debe exportar todas las funciones que se usan
 // abajo (ver bitácora, sección "Pendientes en el código").
-// ==========================================================================
+// ==============================================================
 
 const ventas = require("./datos")
 const { generarVentas } = require("./generador")
@@ -17,13 +13,13 @@ const {
     clientesRecurrentes, totalCiudadCadena, totalCiudadUnaPasada
 } = require("./analitica")
 
-// [Claude] Ayudante: convierte un valor en texto para mostrarlo.
+//convierte un valor en texto para mostrarlo.
 // (JSON.stringify convierte NaN en "null", por eso NaN se trata aparte)
 function mostrar(valor) {
     return Number.isNaN(valor) ? "NaN" : JSON.stringify(valor)
 }
 
-// [Claude] Ayudante: compara dos valores e imprime "OK" o "DIFERENTE".
+// [ compara dos valores e imprime "OK" o "DIFERENTE".
 // Arreglos y objetos se comparan como texto; números y textos, con Object.is
 // (Object.is sí reconoce NaN, a diferencia de ===).
 function comparar(nombre, obtenido, esperado) {
@@ -35,7 +31,7 @@ function comparar(nombre, obtenido, esperado) {
     console.log(`  ${estado.padEnd(10)} ${nombre}  →  ${mostrar(obtenido)} | ${mostrar(esperado)}`)
 }
 
-// [Claude] Ayudante: ejecuta una función y, si se rompe, devuelve el error
+// ejecuta una función y, si se rompe, devuelve el error
 // como texto en lugar de detener el script (sirve para casos borde).
 function probar(funcion) {
     try {
@@ -47,7 +43,7 @@ function probar(funcion) {
 
 
 // --------------------------------------------------------------------------
-// [Claude · MiniReto 3] Ciclo vs. método: cada par debe dar el mismo valor.
+//  Ciclo vs. método: cada par debe dar el mismo valor.
 // Se prueba con la muestra completa, con un elemento y con el arreglo vacío.
 // --------------------------------------------------------------------------
 console.log("\n=== MiniReto 3 · Ciclo vs. método ===")
@@ -65,7 +61,7 @@ for (const conjunto of conjuntos) {
     comparar("ventasPorCiudad  vs ventasPorCiudadM ", ventasPorCiudad(conjunto.datos, "Medellín"), ventasPorCiudadM(conjunto.datos, "Medellín"))
 }
 
-// [Claude · MiniReto 3] Criterios de cumplimiento del reto
+//Criterios de cumplimiento del reto
 console.log("\n Criterios del MiniReto 3:")
 comparar("totalPorCiudad tiene 4 ciudades", Object.keys(totalPorCiudad(ventas)).length, 4)
 comparar("top 3 por valor, de mayor a menor", topProductosPorValor(ventas, 3).map(par => par[0]),
@@ -75,7 +71,7 @@ comparar("ventas conserva su orden (último id)", ventas[ventas.length - 1].id, 
 
 
 // --------------------------------------------------------------------------
-// [Claude · MiniReto 2] Casos borde con el arreglo vacío.
+// Casos borde con el arreglo vacío.
 // Muestra el comportamiento REAL de tus funciones con ciclos. Lo esperado
 // es lo decidido en la bitácora (MiniReto 2, "Decisiones con el arreglo
 // vacío"). Si sale DIFERENTE, ese caso todavía falta en el código.
@@ -89,7 +85,7 @@ comparar("ticketPromedio([])   debe dar 0   ", probar(() => ticketPromedio([])),
 
 
 // --------------------------------------------------------------------------
-// [Claude · MiniReto 4] Los dos errores que reportó la gerente.
+//  Los dos errores que reportó la gerente.
 // --------------------------------------------------------------------------
 console.log("\n=== MiniReto 4 · Errores reportados por la gerente ===")
 
@@ -110,14 +106,14 @@ comparar("Error 2: ticket de un día sin ventas debe dar 0", ticketPromedio(diaS
 
 
 // --------------------------------------------------------------------------
-// [Claude · MiniReto 6] clientesRecurrentes con los 12 datos del Día 1.
+// clientesRecurrentes con los 12 datos del Día 1.
 // --------------------------------------------------------------------------
 console.log("\n=== MiniReto 6 · Clientes recurrentes ===")
 comparar("clientesRecurrentes(ventas)", clientesRecurrentes(ventas), ["C01", "C02", "C03"])
 
 
 // --------------------------------------------------------------------------
-// [Claude · MiniReto 7] Cadena de métodos vs. una sola pasada, con 10.000
+// Cadena de métodos vs. una sola pasada, con 10.000
 // ventas generadas y con la muestra del Día 1.
 // --------------------------------------------------------------------------
 console.log("\n=== MiniReto 7 · totalCiudadCadena vs totalCiudadUnaPasada ===")

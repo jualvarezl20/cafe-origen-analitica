@@ -10,7 +10,7 @@ function valorVenta(venta){
 function totalVendido(ventas){
     let totalvendido=0
     for (const venta of ventas){
-        totalvendido=totalvendido+valorVenta(venta)
+        totalvendido+=totalvendido+valorVenta(venta)
     }
     return totalvendido
 }
@@ -77,7 +77,6 @@ const ventasPorCiudadM = (ventas,ciudad)=>ventas.filter(venta=>venta.ciudad.toLo
 function totalPorCiudad(ventas){
     const totalCiudad={}
     for (const venta of ventas){
-
         if (totalCiudad[venta.ciudad.trim().toLowerCase()]===undefined){
             totalCiudad[venta.ciudad.trim().toLowerCase()]=0
         }

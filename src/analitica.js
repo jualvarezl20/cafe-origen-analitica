@@ -201,7 +201,7 @@ function totalCiudadUnaPasada(ventas, ciudad){
             totalciudad+=valorVenta(venta)
         }
     }
-    return totalcudad
+    return totalciudad
 }
 
 console.log(totalCiudadUnaPasada(ventas, "Medellín"))

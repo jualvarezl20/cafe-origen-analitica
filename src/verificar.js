@@ -116,7 +116,6 @@ comparar("clientesRecurrentes(ventas)", clientesRecurrentes(ventas), ["C01", "C0
 // Cadena de métodos vs. una sola pasada, con 10.000
 // ventas generadas y con la muestra del Día 1.
 // --------------------------------------------------------------------------
-console.log("\n=== MiniReto 7 · totalCiudadCadena vs totalCiudadUnaPasada ===")
 const ventas10000 = generarVentas(10000)
 for (const ciudad of ["Medellín", "Bogotá", "Cali", "Pereira"]) {
     comparar(`10.000 ventas, ${ciudad.padEnd(8)}`, totalCiudadCadena(ventas10000, ciudad), totalCiudadUnaPasada(ventas10000, ciudad))

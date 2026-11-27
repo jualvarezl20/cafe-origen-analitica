@@ -1,5 +1,5 @@
 const ventas = require("./datos")
-
+/*
 console.log (
 ventas.length,
 ventas[0],
@@ -8,4 +8,6 @@ ventas[4].producto
 )
 
 console.table(ventas)
+*/
+
 

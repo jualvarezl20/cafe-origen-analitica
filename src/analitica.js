@@ -10,7 +10,7 @@ function valorVenta(venta){
 function totalVendido(ventas){
     let totalvendido=0
     for (const venta of ventas){
-        totalvendido+=totalvendido+valorVenta(venta)
+        totalvendido=totalvendido+valorVenta(venta)
     }
     return totalvendido
 }
@@ -203,8 +203,26 @@ function totalCiudadUnaPasada(ventas, ciudad){
     return totalciudad
 }
 
-console.log(totalCiudadUnaPasada(ventas, "Medellín"))
 
+
+
+function comprasPorCliente(ventas){
+    const soloclientes=new Map()
+    const recurrentes=[]
+    for (const venta of ventas){
+        soloclientes.set(venta.cliente,(soloclientes.get(venta.cliente) || 0) +1 )
+    }
+    for (const[cliente,veces] of soloclientes){
+        if (veces>1){
+            recurrentes.push(cliente)
+        }
+    }
+    return(recurrentes)
+}
+
+console.log(comprasPorCliente(ventas))
 
 
 module.exports ={totalPorCiudad,unidadesPorProducto,topProductosPorValor,totalVendidoContado,ventaMayorContado,ventasPorCiudadContado,primeraVenta,clientesRecurrentes}
+
+

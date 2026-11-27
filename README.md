@@ -94,5 +94,5 @@ resumen de las funciones aprendidas:
 5. objet.entries toma un objeto y lo vuelve una lista por pares.
 
 
-necesito, que recorra el arreglo, que identifique cuales son medellin y sumarlos 
+
 
